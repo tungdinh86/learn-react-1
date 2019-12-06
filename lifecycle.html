@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Learn Lifecycle</title>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+
+    <div id="mydiv"></div>
+
+    <script type="text/babel">
+        class Hello extends React.Component {
+            render() {
+                return <h1>Hello World!</h1>
+            }
+        }
+    </script>
+
 </head>
+
 <body>
-  Tìm hiểu về React Lifecycle
+
+    <div id="mydiv"></div>
+
+    <script type="text/babel">
+        class LifeCycle extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    name: 'tungdt',
+                    age: 33 
+                }
+            }
+            componentDidMount(){
+                console.log(this.state.name);
+                this.setState({name: 'Dinh tuan tung'});
+            }
+
+            getSnapshotBeforeUpdate(prevProps,prevState){
+                console.log(prevState.name);
+                console.log(this.state.name); 
+
+            }
+            componentDidUpdate(){ 
+                console.log( `now name is ${this.state.name}`); 
+            } 
+            render() {
+                return <h1>{this.state.name}</h1>
+            }
+        } 
+        ReactDOM.render(<LifeCycle />, document.getElementById('mydiv'))
+    </script>
 </body>
+
 </html>
